@@ -2,6 +2,15 @@
 How do tests with Mockito.
 
 1. Install mockito into project
+	Add dependency in your project Maven
+```java
+<dependency>
+	<groupId>org.mockito</groupId>
+	<artifactId>mockito-core</artifactId>
+	<version>2.0.7-beta</version>
+</dependency>
+```
+
 
 2. Create first test with mock
   - Annotation config
@@ -24,9 +33,7 @@ How do tests with Mockito.
 8. How test DAO with Flyway ?
   - Create Flyway config
   - Create Flyway insert data
-  - 
 
 9. How test Controller ?
 
 10. Best practice
-
