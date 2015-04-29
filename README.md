@@ -1,5 +1,5 @@
-# How-do-tests
-![Mockito logo](https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/mockito_logo.png) How do tests with Mockito.
+# ![Mockito logo](https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/mockito_logo.png)  How-do-tests
+How do tests with Mockito.
 
 1. Add dependency in your project Maven 
 ```java
