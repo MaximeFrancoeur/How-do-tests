@@ -10,20 +10,56 @@
 </dependency>
 ```
 
-#### 2. Create first test with mock
-  - Annotation config (@RunWith(MockitoJUnitRunner.class))
-  - setup (@InjectMocks and @Mock)
-  - mock service..
-  - create builder object
-  -  Expected Exception (@Test(expected = Exception.class))
+#### 2. Create a test Class
+  - Annote your Class test with @RunWith(MockitoJUnitRunner.class)
+  - Add @InjectMocks on Class test
+  - Add @Mock on all Class mock
+  - Add @Before and init annotations
 
-#### 3. How mock private methode ?
+```java
+// Example service
+public class MyServiceImpl implements MyService {
 
-#### 4. How captor a property ?
+    @Inject
+    private MyRepositoryDAO myRepositoryDAO;
 
-#### 5. How spy a methode ?
+    public Foo testExample(final Integer id) throws Exception {
+		...
+    }
+}
 
-### 6. Run test with covrage in Intellij
+// Example class test
+@RunWith(MockitoJUnitRunner.class)
+public class MyServiceImplTest {
+
+    @InjectMocks
+    private MyServiceImpl myService;
+
+    @Mock
+    private MyRepositoryDAO myRepositoryDAO;
+
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+    }
+
+    @Test
+    public void testExample() throws Exception {
+	    ...
+	}
+
+}
+```
+
+#### 3. What test?
+
+#### 4. How mock private methode ?
+
+#### 5. How captor a property ?
+
+#### 6. How spy a methode ?
+
+#### 7. Run test with covrage in Intellij
 
 To run the tests with Intellij, you only have to click right on the Class or the Class has an external method if you click in a way only this test method will be run.
 
@@ -65,12 +101,10 @@ Click in the packages you want to go and watch the number of percentage cover yo
 </p>
 
 
-#### 7. How test DAO with Flyway ?
+#### 8. How test DAO with Flyway ?
   - Create Flyway config
   - Create Flyway insert data
 
-#### 8. How test Controller ?
+#### 9. How test Controller ?
 
-#### 9. Best practice
-
-#### 10. Thank you
+#### 10. Best practice
