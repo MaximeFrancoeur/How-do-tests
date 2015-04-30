@@ -1,8 +1,6 @@
-# How-do-tests
-How do tests with Mockito.
+# ![Mockito logo](https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/mockito_logo.png)  How do tests with Mockito.
 
-1. Install mockito into project
-	Add dependency in your project Maven
+1. Add dependency in your project Maven 
 ```java
 <dependency>
 	<groupId>org.mockito</groupId>
@@ -10,7 +8,6 @@ How do tests with Mockito.
 	<version>2.0.7-beta</version>
 </dependency>
 ```
-
 
 2. Create first test with mock
   - Annotation config
