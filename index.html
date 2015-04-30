@@ -23,9 +23,11 @@
 <a id="--how-do-tests-with-mockito" class="anchor" href="#--how-do-tests-with-mockito" aria-hidden="true"><span class="octicon octicon-link"></span></a>
 <img src="https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/mockito_logo.png" alt="Mockito logo">  How do tests with Mockito.</h1>
 
-<ol>
-<li>Add dependency in your project Maven </li>
-</ol>
+<h1>
+<a id="this-page-is-en-construction" class="anchor" href="#this-page-is-en-construction" aria-hidden="true"><span class="octicon octicon-link"></span></a>This page is en construction.</h1>
+
+<h4>
+<a id="1-add-dependency-in-your-project-maven" class="anchor" href="#1-add-dependency-in-your-project-maven" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Add dependency in your project Maven</h4>
 
 <div class="highlight highlight-java"><pre><span class="pl-k">&lt;</span>dependency<span class="pl-k">&gt;</span>
     <span class="pl-k">&lt;</span>groupId<span class="pl-k">&gt;</span>org<span class="pl-k">.</span>mockito<span class="pl-k">&lt;</span><span class="pl-k">/</span>groupId<span class="pl-k">&gt;</span>
@@ -33,40 +35,91 @@
     <span class="pl-k">&lt;</span>version<span class="pl-k">&gt;</span><span class="pl-c1">2.0</span><span class="pl-k">.</span><span class="pl-c1">7</span><span class="pl-k">-</span>beta<span class="pl-k">&lt;</span><span class="pl-k">/</span>version<span class="pl-k">&gt;</span>
 <span class="pl-k">&lt;</span><span class="pl-k">/</span>dependency<span class="pl-k">&gt;</span></pre></div>
 
-<ol>
-<li>
-<p>Create first test with mock</p>
+<h4>
+<a id="2-create-first-test-with-mock" class="anchor" href="#2-create-first-test-with-mock" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Create first test with mock</h4>
 
 <ul>
-<li>Annotation config</li>
-<li>setup</li>
+<li>Annotation config (@RunWith(MockitoJUnitRunner.class))</li>
+<li>setup (@InjectMocks and <a href="https://github.com/Mock" class="user-mention">@Mock</a>)</li>
 <li>mock service..</li>
 <li>create builder object</li>
+<li> Expected Exception (<a href="https://github.com/Test" class="user-mention">@Test</a>(expected = Exception.class))</li>
 </ul>
-</li>
-<li><p>Run test with covrage in Intellij</p></li>
-<li>
-<p>Look covrage</p>
+
+<h4>
+<a id="3-run-test-with-covrage-in-intellij" class="anchor" href="#3-run-test-with-covrage-in-intellij" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Run test with covrage in Intellij</h4>
+
+<p>To run the tests with Intellij, you only have to click right on the Class or the Class has an external method if you click in a way only this test method will be run.</p>
+
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/right_click.png" alt="Run test with coverage">
+</p><p>
+
+</p><p>
+After your test is finished, you can go into the Class or that you have tested. And look to your left. You will see green and red bars may be darker than me because I changed the configuration in Intellij gluer.
+</p>
+
+<ul>
+<li>The green bar means that one or tests are spent on its lines.</li>
+<li>The red bar means that no test cases have passed through his lines of code.</li>
+</ul>
+
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/covrage.png" alt="coverage">
+</p>
+
+<p><br>
+You can click the green bars to view the number of times that his line was covered by your tests.</p>
+
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/left_click_covrage.png" alt="Number hits">
+</p>
+
+<p><br>
+At the bottom right of your Intellij you your new option appear.
+Click above to see the percentage of power line method and hedged Class.</p>
+
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/icon_covrage_right.png" alt="New icon coverage">
+</p>
+
+<p><br>
+Click in the packages you want to go and watch the number of percentage cover your project.</p>
+
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/covrage_detail.png" alt="All coverage">
+</p>
+
+<h4>
+<a id="4-look-covrage" class="anchor" href="#4-look-covrage" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Look covrage</h4>
 
 <ul>
 <li>By line</li>
 <li>Number hit line</li>
 </ul>
-</li>
-<li><p>How mock private methode ?</p></li>
-<li><p>How captor a property ?</p></li>
-<li><p>How spy a methode ?</p></li>
-<li>
-<p>How test DAO with Flyway ?</p>
+
+<h4>
+<a id="5-how-mock-private-methode-" class="anchor" href="#5-how-mock-private-methode-" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. How mock private methode ?</h4>
+
+<h4>
+<a id="6-how-captor-a-property-" class="anchor" href="#6-how-captor-a-property-" aria-hidden="true"><span class="octicon octicon-link"></span></a>6. How captor a property ?</h4>
+
+<h4>
+<a id="7-how-spy-a-methode-" class="anchor" href="#7-how-spy-a-methode-" aria-hidden="true"><span class="octicon octicon-link"></span></a>7. How spy a methode ?</h4>
+
+<h4>
+<a id="8-how-test-dao-with-flyway-" class="anchor" href="#8-how-test-dao-with-flyway-" aria-hidden="true"><span class="octicon octicon-link"></span></a>8. How test DAO with Flyway ?</h4>
 
 <ul>
 <li>Create Flyway config</li>
 <li>Create Flyway insert data</li>
 </ul>
-</li>
-<li><p>How test Controller ?</p></li>
-<li><p>Best practice</p></li>
-</ol>
+
+<h4>
+<a id="9-how-test-controller-" class="anchor" href="#9-how-test-controller-" aria-hidden="true"><span class="octicon octicon-link"></span></a>9. How test Controller ?</h4>
+
+<h4>
+<a id="10-best-practice" class="anchor" href="#10-best-practice" aria-hidden="true"><span class="octicon octicon-link"></span></a>10. Best practice</h4>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/MaximeFrancoeur/How-do-tests">How-do-tests</a> is maintained by <a href="https://github.com/MaximeFrancoeur">MaximeFrancoeur</a>.</span>
