@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-public class FooImplTest {
+public class MyServiceImplTest {
 
     @Before
     public void setUp() throws Exception {
