@@ -10,10 +10,11 @@
 ```
 
 2. Create first test with mock
-  - Annotation config
-  - setup
+  - Annotation config (@RunWith(MockitoJUnitRunner.class))
+  - setup (@InjectMocks and @Mock)
   - mock service..
   - create builder object
+  - - Expected Exception (@Test(expected = Exception.class))
 
 3. Run test with covrage in Intellij
 
