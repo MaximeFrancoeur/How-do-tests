@@ -1,5 +1,6 @@
 # ![Mockito logo](https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/mockito_logo.png)  How do tests with Mockito.
-## This page is under construction.
+### This page is under construction.
+
 #### 1. Add dependency in your project Maven 
 ```java
 <dependency>
@@ -16,7 +17,13 @@
   - create builder object
   -  Expected Exception (@Test(expected = Exception.class))
 
-#### 3. Run test with covrage in Intellij
+#### 3. How mock private methode ?
+
+#### 4. How captor a property ?
+
+#### 5. How spy a methode ?
+
+### 6. Run test with covrage in Intellij
 
 To run the tests with Intellij, you only have to click right on the Class or the Class has an external method if you click in a way only this test method will be run.
 
@@ -57,20 +64,13 @@ Click in the packages you want to go and watch the number of percentage cover yo
 <img align="center" src="https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/covrage_detail.png" alt="All coverage">
 </p>
 
-#### 4. Look covrage
-  - By line
-  - Number hit line
-  
-#### 5. How mock private methode ?
 
-#### 6. How captor a property ?
-
-#### 7. How spy a methode ?
-
-#### 8. How test DAO with Flyway ?
+#### 7. How test DAO with Flyway ?
   - Create Flyway config
   - Create Flyway insert data
 
-#### 9. How test Controller ?
+#### 8. How test Controller ?
 
-#### 10. Best practice
+#### 9. Best practice
+
+#### 10. Thank you
