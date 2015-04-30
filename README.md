@@ -4,9 +4,22 @@
 #### 1. Add dependency in your project Maven 
 ```java
 <dependency>
-	<groupId>org.mockito</groupId>
-	<artifactId>mockito-core</artifactId>
-	<version>2.0.7-beta</version>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.12</version>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.mockito</groupId>
+		<artifactId>mockito-core</artifactId>
+		<version>2.0.7-beta</version>
+	</dependency>
+	<dependency>
+		<groupId>javax.inject</groupId>
+		<artifactId>javax.inject</artifactId>
+		<version>1</version>
+	</dependency>
 </dependency>
 ```
 
