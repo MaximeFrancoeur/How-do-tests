@@ -4,6 +4,7 @@ import domain.Foo;
 import repository.MyRepositoryDAO;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,19 +16,20 @@ public class MyServiceImpl implements MyService {
     public Foo getById(final Integer id) throws Exception {
 
         if (id == null) {
-            throw new Exception("Id is null...");
+            throw new Exception();
         }
 
         final Foo foo = myRepositoryDAO.getById(id);
 
         if (foo == null) {
-            // ...
+            throw new Exception();
         }
 
         return foo;
     }
 
     public List<Foo> findByName(final String name) throws Exception {
+
         if (name == null || name.equals("")) {
             throw new Exception("Name is null...");
         }
@@ -35,7 +37,7 @@ public class MyServiceImpl implements MyService {
         final List<Foo> foo = myRepositoryDAO.findByName(name);
 
         if (foo == null) {
-            // ...
+            return new ArrayList<Foo>();
         }
 
         return foo;
@@ -49,8 +51,6 @@ public class MyServiceImpl implements MyService {
 
         foo.setLastModifiedDate(new Date());
 
-        final Foo fooUpdated = myRepositoryDAO.updateFoo(foo);
-
-        return fooUpdated;
+        return myRepositoryDAO.updateFoo(foo);
     }
 }
