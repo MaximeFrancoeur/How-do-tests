@@ -32,6 +32,7 @@ In Intellij open a Class and the shortcut to create a test Class is. : `CTRL + s
 
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/create_test.png" alt="Create test">
+</p>
 
   - Annote your Class test with @RunWith(MockitoJUnitRunner.class)
   - Add @InjectMocks on Class test
