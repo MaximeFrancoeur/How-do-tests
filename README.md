@@ -76,7 +76,7 @@ public class MyServiceImpl implements MyService {
 
     public Foo getById(final Integer id) throws Exception {
 
-		// 1. Test id null expected Exception
+		// 1. Test if id is null : expected Exception
         if (id == null) {
             throw new Exception();
         }
@@ -85,7 +85,7 @@ public class MyServiceImpl implements MyService {
 		// 3. Test if the argument is the same as that through the method.
         final Foo foo = myRepositoryDAO.getById(id);
 
-		// 4. Test foo is null and expected Exception
+		// 4. Test if foo is null : expected Exception
         if (foo == null) {
             throw new Exception();
         }
@@ -96,8 +96,8 @@ public class MyServiceImpl implements MyService {
 
     public List<Foo> findByName(final String name) throws Exception {
 
-		// 1. Test name is null : expected Exception
-		// 2. Test name is not null but empty ("") : expected Exception
+		// 1. Test if name is null : expected Exception
+		// 2. Test if name is not null but empty ("") : expected Exception
         if (name == null || name.equals("")) {
             throw new Exception();
         }
@@ -106,7 +106,7 @@ public class MyServiceImpl implements MyService {
 		// 4. Test if the argument is the same as that through the method.
         final List<Foo> foo = myRepositoryDAO.findByName(name);
 
-		// 5. Test foo is null : excepted ArraysList empty
+		// 5. Test if foo is null : excepted ArraysList empty
         if (foo == null) {
             return new ArrayList<Foo>();
         }
@@ -117,13 +117,13 @@ public class MyServiceImpl implements MyService {
 
     public Foo updateFoo(Foo foo) throws Exception {
 
-		// 1. Test foo is null : expected Exception
-		// 2. Test foo is not null but id  is null : expected Exception
+		// 1. Test if foo is null : expected Exception
+		// 2. Test if foo is not null but if id is null : expected Exception
         if (foo == null || foo.getId() == null) {
             throw new Exception();
         }
 		
-		// 3. Test lastModifiedDate is modified.
+		// 3. Test if lastModifiedDate is modified.
         foo.setLastModifiedDate(new Date());
 
 		// 4. Finally a test with no error.
