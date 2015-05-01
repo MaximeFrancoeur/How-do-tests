@@ -24,6 +24,15 @@
 ```
 
 #### 2. Create a test Class
+In Intellij open a Class and the shortcut to create a test Class is. : `CTRL + shift + t`
+
+- Select Junit4
+- Check setUp /@Before
+- Check All the methods you want to test.
+
+<p align="center">
+<img align="center" src="https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/create_test.png" alt="Create test">
+
   - Annote your Class test with @RunWith(MockitoJUnitRunner.class)
   - Add @InjectMocks on Class test
   - Add @Mock on all Class mock
