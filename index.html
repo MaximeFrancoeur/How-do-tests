@@ -30,33 +30,145 @@
 <a id="1-add-dependency-in-your-project-maven" class="anchor" href="#1-add-dependency-in-your-project-maven" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Add dependency in your project Maven</h4>
 
 <div class="highlight highlight-java"><pre><span class="pl-k">&lt;</span>dependency<span class="pl-k">&gt;</span>
-    <span class="pl-k">&lt;</span>groupId<span class="pl-k">&gt;</span>org<span class="pl-k">.</span>mockito<span class="pl-k">&lt;</span><span class="pl-k">/</span>groupId<span class="pl-k">&gt;</span>
-    <span class="pl-k">&lt;</span>artifactId<span class="pl-k">&gt;</span>mockito<span class="pl-k">-</span>core<span class="pl-k">&lt;</span><span class="pl-k">/</span>artifactId<span class="pl-k">&gt;</span>
-    <span class="pl-k">&lt;</span>version<span class="pl-k">&gt;</span><span class="pl-c1">2.0</span><span class="pl-k">.</span><span class="pl-c1">7</span><span class="pl-k">-</span>beta<span class="pl-k">&lt;</span><span class="pl-k">/</span>version<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>dependency<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>groupId<span class="pl-k">&gt;</span>junit<span class="pl-k">&lt;</span><span class="pl-k">/</span>groupId<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>artifactId<span class="pl-k">&gt;</span>junit<span class="pl-k">&lt;</span><span class="pl-k">/</span>artifactId<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>version<span class="pl-k">&gt;</span><span class="pl-c1">4.12</span><span class="pl-k">&lt;</span><span class="pl-k">/</span>version<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>scope<span class="pl-k">&gt;</span>test<span class="pl-k">&lt;</span><span class="pl-k">/</span>scope<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span><span class="pl-k">/</span>dependency<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>dependency<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>groupId<span class="pl-k">&gt;</span>org<span class="pl-k">.</span>mockito<span class="pl-k">&lt;</span><span class="pl-k">/</span>groupId<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>artifactId<span class="pl-k">&gt;</span>mockito<span class="pl-k">-</span>core<span class="pl-k">&lt;</span><span class="pl-k">/</span>artifactId<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>version<span class="pl-k">&gt;</span><span class="pl-c1">2.0</span><span class="pl-k">.</span><span class="pl-c1">7</span><span class="pl-k">-</span>beta<span class="pl-k">&lt;</span><span class="pl-k">/</span>version<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span><span class="pl-k">/</span>dependency<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>dependency<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>groupId<span class="pl-k">&gt;</span>javax<span class="pl-k">.</span>inject<span class="pl-k">&lt;</span><span class="pl-k">/</span>groupId<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>artifactId<span class="pl-k">&gt;</span>javax<span class="pl-k">.</span>inject<span class="pl-k">&lt;</span><span class="pl-k">/</span>artifactId<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>version<span class="pl-k">&gt;</span><span class="pl-c1">1</span><span class="pl-k">&lt;</span><span class="pl-k">/</span>version<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span><span class="pl-k">/</span>dependency<span class="pl-k">&gt;</span>
 <span class="pl-k">&lt;</span><span class="pl-k">/</span>dependency<span class="pl-k">&gt;</span></pre></div>
 
 <h4>
-<a id="2-create-first-test-with-mock" class="anchor" href="#2-create-first-test-with-mock" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Create first test with mock</h4>
+<a id="2-create-a-test-class" class="anchor" href="#2-create-a-test-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Create a test Class</h4>
 
 <ul>
-<li>Annotation config (@RunWith(MockitoJUnitRunner.class))</li>
-<li>setup (@InjectMocks and <a href="https://github.com/Mock" class="user-mention">@Mock</a>)</li>
-<li>mock service..</li>
-<li>create builder object</li>
-<li> Expected Exception (<a href="https://github.com/Test" class="user-mention">@Test</a>(expected = Exception.class))</li>
+<li>Annote your Class test with @RunWith(MockitoJUnitRunner.class)</li>
+<li>Add @InjectMocks on Class test</li>
+<li>Add <a href="https://github.com/Mock" class="user-mention">@Mock</a> on all Class mock</li>
+<li>Add <a href="https://github.com/Before" class="user-mention">@Before</a> and init annotations</li>
 </ul>
 
-<h4>
-<a id="3-how-mock-private-methode-" class="anchor" href="#3-how-mock-private-methode-" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. How mock private methode ?</h4>
+<div class="highlight highlight-java"><pre><span class="pl-c">// Example service</span>
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyServiceImpl</span> <span class="pl-k">implements</span> <span class="pl-e">MyService</span> {
+
+    <span class="pl-k">@Inject</span>
+    <span class="pl-k">private</span> <span class="pl-smi">MyRepositoryDAO</span> myRepositoryDAO;
+
+    <span class="pl-k">public</span> <span class="pl-smi">Foo</span> <span class="pl-en">testExample</span>(<span class="pl-k">final</span> <span class="pl-smi">Integer</span> <span class="pl-v">id</span>) <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
+        <span class="pl-c1">...</span>
+    }
+}
+
+<span class="pl-c">// Example class test</span>
+@RunWith(<span class="pl-smi">MockitoJUnitRunner</span><span class="pl-k">.</span>class)
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyServiceImplTest</span> {
+
+    <span class="pl-k">@InjectMocks</span>
+    <span class="pl-k">private</span> <span class="pl-smi">MyServiceImpl</span> myService;
+
+    <span class="pl-k">@Mock</span>
+    <span class="pl-k">private</span> <span class="pl-smi">MyRepositoryDAO</span> myRepositoryDAO;
+
+    <span class="pl-k">@Before</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">setUp</span>() <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
+        <span class="pl-smi">MockitoAnnotations</span><span class="pl-k">.</span>initMocks(<span class="pl-v">this</span>);
+    }
+
+    <span class="pl-k">@Test</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">testExample</span>() <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
+        <span class="pl-c1">...</span>
+    }
+
+}</pre></div>
 
 <h4>
-<a id="4-how-captor-a-property-" class="anchor" href="#4-how-captor-a-property-" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. How captor a property ?</h4>
+<a id="3-what-test" class="anchor" href="#3-what-test" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. What test?</h4>
+
+<p>I have a service to test with his methods. I should do what test to cover the largest number of cases?</p>
+
+<div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyServiceImpl</span> <span class="pl-k">implements</span> <span class="pl-e">MyService</span> {
+
+    <span class="pl-k">@Inject</span>
+    <span class="pl-k">private</span> <span class="pl-smi">MyRepositoryDAO</span> myRepositoryDAO;
+
+    <span class="pl-k">public</span> <span class="pl-smi">Foo</span> <span class="pl-en">getById</span>(<span class="pl-k">final</span> <span class="pl-smi">Integer</span> <span class="pl-v">id</span>) <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
+
+        <span class="pl-c">// 1. Test id null expected Exception</span>
+        <span class="pl-k">if</span> (id <span class="pl-k">==</span> <span class="pl-c1">null</span>) {
+            <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-smi">Exception</span>();
+        }
+
+        <span class="pl-c">// 2. Test whether the argument is passed to the DAO.</span>
+        <span class="pl-c">// 3. Test if the argument is the same as that through the method.</span>
+        <span class="pl-k">final</span> <span class="pl-smi">Foo</span> foo <span class="pl-k">=</span> myRepositoryDAO<span class="pl-k">.</span>getById(id);
+
+        <span class="pl-c">// 4. Test foo is null and expected Exception</span>
+        <span class="pl-k">if</span> (foo <span class="pl-k">==</span> <span class="pl-c1">null</span>) {
+            <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-smi">Exception</span>();
+        }
+
+        <span class="pl-c">// 5. Finally a test with no error.</span>
+        <span class="pl-k">return</span> foo;
+    }
+
+    <span class="pl-k">public</span> <span class="pl-k">List&lt;<span class="pl-smi">Foo</span>&gt;</span> <span class="pl-en">findByName</span>(<span class="pl-k">final</span> <span class="pl-smi">String</span> <span class="pl-v">name</span>) <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
+
+        <span class="pl-c">// 1. Test name is null : expected Exception</span>
+        <span class="pl-c">// 2. Test name is not null but empty ("") : expected Exception</span>
+        <span class="pl-k">if</span> (name <span class="pl-k">==</span> <span class="pl-c1">null</span> <span class="pl-k">||</span> name<span class="pl-k">.</span>equals(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>)) {
+            <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-smi">Exception</span>();
+        }
+
+        <span class="pl-c">// 3. Test whether the argument is passed to the DAO.</span>
+        <span class="pl-c">// 4. Test if the argument is the same as that through the method.</span>
+        <span class="pl-k">final</span> <span class="pl-k">List&lt;<span class="pl-smi">Foo</span>&gt;</span> foo <span class="pl-k">=</span> myRepositoryDAO<span class="pl-k">.</span>findByName(name);
+
+        <span class="pl-c">// 5. Test foo is null : excepted ArraysList empty</span>
+        <span class="pl-k">if</span> (foo <span class="pl-k">==</span> <span class="pl-c1">null</span>) {
+            <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-k">ArrayList&lt;<span class="pl-smi">Foo</span>&gt;</span>();
+        }
+
+        <span class="pl-c">// 5. Finally a test with no error.</span>
+        <span class="pl-k">return</span> foo;
+    }
+
+    <span class="pl-k">public</span> <span class="pl-smi">Foo</span> <span class="pl-en">updateFoo</span>(<span class="pl-smi">Foo</span> <span class="pl-v">foo</span>) <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
+
+        <span class="pl-c">// 1. Test foo is null : expected Exception</span>
+        <span class="pl-c">// 2. Test foo is not null but id  is null : expected Exception</span>
+        <span class="pl-k">if</span> (foo <span class="pl-k">==</span> <span class="pl-c1">null</span> <span class="pl-k">||</span> foo<span class="pl-k">.</span>getId() <span class="pl-k">==</span> <span class="pl-c1">null</span>) {
+            <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-smi">Exception</span>();
+        }
+
+        <span class="pl-c">// 3. Test lastModifiedDate is modified.</span>
+        foo<span class="pl-k">.</span>setLastModifiedDate(<span class="pl-k">new</span> <span class="pl-smi">Date</span>());
+
+        <span class="pl-c">// 4. Finally a test with no error.</span>
+        <span class="pl-k">return</span> myRepositoryDAO<span class="pl-k">.</span>updateFoo(foo);
+    }
+}</pre></div>
 
 <h4>
-<a id="5-how-spy-a-methode-" class="anchor" href="#5-how-spy-a-methode-" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. How spy a methode ?</h4>
+<a id="4-how-mock-private-methode-" class="anchor" href="#4-how-mock-private-methode-" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. How mock private methode ?</h4>
 
-<h3>
-<a id="6-run-test-with-covrage-in-intellij" class="anchor" href="#6-run-test-with-covrage-in-intellij" aria-hidden="true"><span class="octicon octicon-link"></span></a>6. Run test with covrage in Intellij</h3>
+<h4>
+<a id="5-how-captor-a-property-" class="anchor" href="#5-how-captor-a-property-" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. How captor a property ?</h4>
+
+<h4>
+<a id="6-how-spy-a-methode-" class="anchor" href="#6-how-spy-a-methode-" aria-hidden="true"><span class="octicon octicon-link"></span></a>6. How spy a methode ?</h4>
+
+<h4>
+<a id="7-run-test-with-covrage-in-intellij" class="anchor" href="#7-run-test-with-covrage-in-intellij" aria-hidden="true"><span class="octicon octicon-link"></span></a>7. Run test with covrage in Intellij</h4>
 
 <p>To run the tests with Intellij, you only have to click right on the Class or the Class has an external method if you click in a way only this test method will be run.</p>
 
@@ -100,7 +212,7 @@ Click in the packages you want to go and watch the number of percentage cover yo
 </p>
 
 <h4>
-<a id="7-how-test-dao-with-flyway-" class="anchor" href="#7-how-test-dao-with-flyway-" aria-hidden="true"><span class="octicon octicon-link"></span></a>7. How test DAO with Flyway ?</h4>
+<a id="8-how-test-dao-with-flyway-" class="anchor" href="#8-how-test-dao-with-flyway-" aria-hidden="true"><span class="octicon octicon-link"></span></a>8. How test DAO with Flyway ?</h4>
 
 <ul>
 <li>Create Flyway config</li>
@@ -108,13 +220,10 @@ Click in the packages you want to go and watch the number of percentage cover yo
 </ul>
 
 <h4>
-<a id="8-how-test-controller-" class="anchor" href="#8-how-test-controller-" aria-hidden="true"><span class="octicon octicon-link"></span></a>8. How test Controller ?</h4>
+<a id="9-how-test-controller-" class="anchor" href="#9-how-test-controller-" aria-hidden="true"><span class="octicon octicon-link"></span></a>9. How test Controller ?</h4>
 
 <h4>
-<a id="9-best-practice" class="anchor" href="#9-best-practice" aria-hidden="true"><span class="octicon octicon-link"></span></a>9. Best practice</h4>
-
-<h4>
-<a id="10-thank-you" class="anchor" href="#10-thank-you" aria-hidden="true"><span class="octicon octicon-link"></span></a>10. Thank you</h4>
+<a id="10-best-practice" class="anchor" href="#10-best-practice" aria-hidden="true"><span class="octicon octicon-link"></span></a>10. Best practice</h4>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/MaximeFrancoeur/How-do-tests">How-do-tests</a> is maintained by <a href="https://github.com/MaximeFrancoeur">MaximeFrancoeur</a>.</span>
