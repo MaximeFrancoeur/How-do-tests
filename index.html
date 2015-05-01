@@ -62,126 +62,130 @@
 
 <p align="center">
 <img align="center" src="https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/create_test.png" alt="Create test">
+</p>
 
-  - Annote your Class test with @RunWith(MockitoJUnitRunner.class)
-  - Add @InjectMocks on Class test
-  - Add <a href="https://github.com/Mock" class="user-mention">@Mock</a> on all Class mock
-  - Add <a href="https://github.com/Before" class="user-mention">@Before</a> and init annotations
+<ul>
+<li>Annote your Class test with @RunWith(MockitoJUnitRunner.class)</li>
+<li>Add @InjectMocks on Class test</li>
+<li>Add <a href="https://github.com/Mock" class="user-mention">@Mock</a> on all Class mock</li>
+<li>Add <a href="https://github.com/Before" class="user-mention">@Before</a> and init annotations</li>
+</ul>
 
-```java
-// Example service
-public class MyServiceImpl implements MyService {
+<div class="highlight highlight-java"><pre><span class="pl-c">// Example service</span>
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyServiceImpl</span> <span class="pl-k">implements</span> <span class="pl-e">MyService</span> {
 
-    <a href="https://github.com/Inject" class="user-mention">@Inject</a>
-    private MyRepositoryDAO myRepositoryDAO;
+    <span class="pl-k">@Inject</span>
+    <span class="pl-k">private</span> <span class="pl-smi">MyRepositoryDAO</span> myRepositoryDAO;
 
-    public Foo testExample(final Integer id) throws Exception {
-        ...
+    <span class="pl-k">public</span> <span class="pl-smi">Foo</span> <span class="pl-en">testExample</span>(<span class="pl-k">final</span> <span class="pl-smi">Integer</span> <span class="pl-v">id</span>) <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
+        <span class="pl-c1">...</span>
     }
 }
 
-// Example class test
-@RunWith(MockitoJUnitRunner.class)
-public class MyServiceImplTest {
+<span class="pl-c">// Example class test</span>
+@RunWith(<span class="pl-smi">MockitoJUnitRunner</span><span class="pl-k">.</span>class)
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyServiceImplTest</span> {
 
-    @InjectMocks
-    private MyServiceImpl myService;
+    <span class="pl-k">@InjectMocks</span>
+    <span class="pl-k">private</span> <span class="pl-smi">MyServiceImpl</span> myService;
 
-    <a href="https://github.com/Mock" class="user-mention">@Mock</a>
-    private MyRepositoryDAO myRepositoryDAO;
+    <span class="pl-k">@Mock</span>
+    <span class="pl-k">private</span> <span class="pl-smi">MyRepositoryDAO</span> myRepositoryDAO;
 
-    <a href="https://github.com/Before" class="user-mention">@Before</a>
-    public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
+    <span class="pl-k">@Before</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">setUp</span>() <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
+        <span class="pl-smi">MockitoAnnotations</span><span class="pl-k">.</span>initMocks(<span class="pl-v">this</span>);
     }
 
-    <a href="https://github.com/Test" class="user-mention">@Test</a>
-    public void testExample() throws Exception {
-        ...
+    <span class="pl-k">@Test</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">testExample</span>() <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
+        <span class="pl-c1">...</span>
     }
 
-}
-```
+}</pre></div>
 
-#### 3. What test?
+<h4>
+<a id="3-what-test" class="anchor" href="#3-what-test" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. What test?</h4>
 
-I have a service to test with his methods. I should do what test to cover the largest number of cases?
+<p>I have a service to test with his methods. I should do what test to cover the largest number of cases?</p>
 
-```java
-public class MyServiceImpl implements MyService {
+<div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyServiceImpl</span> <span class="pl-k">implements</span> <span class="pl-e">MyService</span> {
 
-    <a href="https://github.com/Inject" class="user-mention">@Inject</a>
-    private MyRepositoryDAO myRepositoryDAO;
+    <span class="pl-k">@Inject</span>
+    <span class="pl-k">private</span> <span class="pl-smi">MyRepositoryDAO</span> myRepositoryDAO;
 
-    public Foo getById(final Integer id) throws Exception {
+    <span class="pl-k">public</span> <span class="pl-smi">Foo</span> <span class="pl-en">getById</span>(<span class="pl-k">final</span> <span class="pl-smi">Integer</span> <span class="pl-v">id</span>) <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
 
-        // 1. Test if id is null : expected Exception
-        if (id == null) {
-            throw new Exception();
-        }
-        
-        // 2. Test whether the argument is passed to the DAO.
-        // 3. Test if the argument is the same as that through the method.
-        final Foo foo = myRepositoryDAO.getById(id);
-
-        // 4. Test if foo is null : expected Exception
-        if (foo == null) {
-            throw new Exception();
+        <span class="pl-c">// 1. Test if id is null : expected Exception</span>
+        <span class="pl-k">if</span> (id <span class="pl-k">==</span> <span class="pl-c1">null</span>) {
+            <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-smi">Exception</span>();
         }
 
-        // 5. Finally a test with no error.
-        return foo;
+        <span class="pl-c">// 2. Test whether the argument is passed to the DAO.</span>
+        <span class="pl-c">// 3. Test if the argument is the same as that through the method.</span>
+        <span class="pl-k">final</span> <span class="pl-smi">Foo</span> foo <span class="pl-k">=</span> myRepositoryDAO<span class="pl-k">.</span>getById(id);
+
+        <span class="pl-c">// 4. Test if foo is null : expected Exception</span>
+        <span class="pl-k">if</span> (foo <span class="pl-k">==</span> <span class="pl-c1">null</span>) {
+            <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-smi">Exception</span>();
+        }
+
+        <span class="pl-c">// 5. Finally a test with no error.</span>
+        <span class="pl-k">return</span> foo;
     }
 
-    public List findByName(final String name) throws Exception {
+    <span class="pl-k">public</span> <span class="pl-k">List&lt;<span class="pl-smi">Foo</span>&gt;</span> <span class="pl-en">findByName</span>(<span class="pl-k">final</span> <span class="pl-smi">String</span> <span class="pl-v">name</span>) <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
 
-        // 1. Test if name is null : expected Exception
-        // 2. Test if name is not null but empty ("") : expected Exception
-        if (name == null || name.equals("")) {
-            throw new Exception();
+        <span class="pl-c">// 1. Test if name is null : expected Exception</span>
+        <span class="pl-c">// 2. Test if name is not null but empty ("") : expected Exception</span>
+        <span class="pl-k">if</span> (name <span class="pl-k">==</span> <span class="pl-c1">null</span> <span class="pl-k">||</span> name<span class="pl-k">.</span>equals(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>)) {
+            <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-smi">Exception</span>();
         }
 
-        // 3. Test whether the argument is passed to the DAO.
-        // 4. Test if the argument is the same as that through the method.
-        final List foo = myRepositoryDAO.findByName(name);
+        <span class="pl-c">// 3. Test whether the argument is passed to the DAO.</span>
+        <span class="pl-c">// 4. Test if the argument is the same as that through the method.</span>
+        <span class="pl-k">final</span> <span class="pl-k">List&lt;<span class="pl-smi">Foo</span>&gt;</span> foo <span class="pl-k">=</span> myRepositoryDAO<span class="pl-k">.</span>findByName(name);
 
-        // 5. Test if foo is null : excepted ArraysList empty
-        if (foo == null) {
-            return new ArrayList();
+        <span class="pl-c">// 5. Test if foo is null : excepted ArraysList empty</span>
+        <span class="pl-k">if</span> (foo <span class="pl-k">==</span> <span class="pl-c1">null</span>) {
+            <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-k">ArrayList&lt;<span class="pl-smi">Foo</span>&gt;</span>();
         }
-        
-        // 5. Finally a test with no error.
-        return foo;
+
+        <span class="pl-c">// 5. Finally a test with no error.</span>
+        <span class="pl-k">return</span> foo;
     }
 
-    public Foo updateFoo(Foo foo) throws Exception {
+    <span class="pl-k">public</span> <span class="pl-smi">Foo</span> <span class="pl-en">updateFoo</span>(<span class="pl-smi">Foo</span> <span class="pl-v">foo</span>) <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
 
-        // 1. Test if foo is null : expected Exception
-        // 2. Test if foo is not null but if id is null : expected Exception
-        if (foo == null || foo.getId() == null) {
-            throw new Exception();
+        <span class="pl-c">// 1. Test if foo is null : expected Exception</span>
+        <span class="pl-c">// 2. Test if foo is not null but if id is null : expected Exception</span>
+        <span class="pl-k">if</span> (foo <span class="pl-k">==</span> <span class="pl-c1">null</span> <span class="pl-k">||</span> foo<span class="pl-k">.</span>getId() <span class="pl-k">==</span> <span class="pl-c1">null</span>) {
+            <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-smi">Exception</span>();
         }
-        
-        // 3. Test if lastModifiedDate is modified.
-        foo.setLastModifiedDate(new Date());
 
-        // 4. Finally a test with no error.
-        return myRepositoryDAO.updateFoo(foo);
+        <span class="pl-c">// 3. Test if lastModifiedDate is modified.</span>
+        foo<span class="pl-k">.</span>setLastModifiedDate(<span class="pl-k">new</span> <span class="pl-smi">Date</span>());
+
+        <span class="pl-c">// 4. Finally a test with no error.</span>
+        <span class="pl-k">return</span> myRepositoryDAO<span class="pl-k">.</span>updateFoo(foo);
     }
-}
-```
+}</pre></div>
 
-#### 4. How mock private methode ?
+<h4>
+<a id="4-how-mock-private-methode-" class="anchor" href="#4-how-mock-private-methode-" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. How mock private methode ?</h4>
 
-#### 5. How captor a property ?
+<h4>
+<a id="5-how-captor-a-property-" class="anchor" href="#5-how-captor-a-property-" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. How captor a property ?</h4>
 
-#### 6. How spy a methode ?
+<h4>
+<a id="6-how-spy-a-methode-" class="anchor" href="#6-how-spy-a-methode-" aria-hidden="true"><span class="octicon octicon-link"></span></a>6. How spy a methode ?</h4>
 
-#### 7. Run test with covrage in Intellij
+<h4>
+<a id="7-run-test-with-covrage-in-intellij" class="anchor" href="#7-run-test-with-covrage-in-intellij" aria-hidden="true"><span class="octicon octicon-link"></span></a>7. Run test with covrage in Intellij</h4>
 
-To run the tests with Intellij, you only have to click right on the Class or the Class has an external method if you click in a way only this test method will be run.
+<p>To run the tests with Intellij, you only have to click right on the Class or the Class has an external method if you click in a way only this test method will be run.</p>
 
-</p><p align="center">
+<p align="center">
 <img align="center" src="https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/right_click.png" alt="Run test with coverage">
 </p><p>
 
