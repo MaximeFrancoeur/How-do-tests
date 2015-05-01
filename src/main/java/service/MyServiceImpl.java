@@ -31,7 +31,7 @@ public class MyServiceImpl implements MyService {
     public List<Foo> findByName(final String name) throws Exception {
 
         if (name == null || name.equals("")) {
-            throw new Exception("Name is null...");
+            throw new Exception();
         }
 
         final List<Foo> foo = myRepositoryDAO.findByName(name);
@@ -46,7 +46,7 @@ public class MyServiceImpl implements MyService {
     public Foo updateFoo(Foo foo) throws Exception {
 
         if (foo == null || foo.getId() == null) {
-            throw new Exception("...");
+            throw new Exception();
         }
 
         foo.setLastModifiedDate(new Date());
