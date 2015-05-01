@@ -103,7 +103,7 @@
 
     <span class="pl-k">public</span> <span class="pl-smi">Foo</span> <span class="pl-en">getById</span>(<span class="pl-k">final</span> <span class="pl-smi">Integer</span> <span class="pl-v">id</span>) <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
 
-        <span class="pl-c">// 1. Test id null expected Exception</span>
+        <span class="pl-c">// 1. Test if id is null : expected Exception</span>
         <span class="pl-k">if</span> (id <span class="pl-k">==</span> <span class="pl-c1">null</span>) {
             <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-smi">Exception</span>();
         }
@@ -112,7 +112,7 @@
         <span class="pl-c">// 3. Test if the argument is the same as that through the method.</span>
         <span class="pl-k">final</span> <span class="pl-smi">Foo</span> foo <span class="pl-k">=</span> myRepositoryDAO<span class="pl-k">.</span>getById(id);
 
-        <span class="pl-c">// 4. Test foo is null and expected Exception</span>
+        <span class="pl-c">// 4. Test if foo is null : expected Exception</span>
         <span class="pl-k">if</span> (foo <span class="pl-k">==</span> <span class="pl-c1">null</span>) {
             <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-smi">Exception</span>();
         }
@@ -123,8 +123,8 @@
 
     <span class="pl-k">public</span> <span class="pl-k">List&lt;<span class="pl-smi">Foo</span>&gt;</span> <span class="pl-en">findByName</span>(<span class="pl-k">final</span> <span class="pl-smi">String</span> <span class="pl-v">name</span>) <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
 
-        <span class="pl-c">// 1. Test name is null : expected Exception</span>
-        <span class="pl-c">// 2. Test name is not null but empty ("") : expected Exception</span>
+        <span class="pl-c">// 1. Test if name is null : expected Exception</span>
+        <span class="pl-c">// 2. Test if name is not null but empty ("") : expected Exception</span>
         <span class="pl-k">if</span> (name <span class="pl-k">==</span> <span class="pl-c1">null</span> <span class="pl-k">||</span> name<span class="pl-k">.</span>equals(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>)) {
             <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-smi">Exception</span>();
         }
@@ -133,7 +133,7 @@
         <span class="pl-c">// 4. Test if the argument is the same as that through the method.</span>
         <span class="pl-k">final</span> <span class="pl-k">List&lt;<span class="pl-smi">Foo</span>&gt;</span> foo <span class="pl-k">=</span> myRepositoryDAO<span class="pl-k">.</span>findByName(name);
 
-        <span class="pl-c">// 5. Test foo is null : excepted ArraysList empty</span>
+        <span class="pl-c">// 5. Test if foo is null : excepted ArraysList empty</span>
         <span class="pl-k">if</span> (foo <span class="pl-k">==</span> <span class="pl-c1">null</span>) {
             <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-k">ArrayList&lt;<span class="pl-smi">Foo</span>&gt;</span>();
         }
@@ -144,13 +144,13 @@
 
     <span class="pl-k">public</span> <span class="pl-smi">Foo</span> <span class="pl-en">updateFoo</span>(<span class="pl-smi">Foo</span> <span class="pl-v">foo</span>) <span class="pl-k">throws</span> <span class="pl-smi">Exception</span> {
 
-        <span class="pl-c">// 1. Test foo is null : expected Exception</span>
-        <span class="pl-c">// 2. Test foo is not null but id  is null : expected Exception</span>
+        <span class="pl-c">// 1. Test if foo is null : expected Exception</span>
+        <span class="pl-c">// 2. Test if foo is not null but if id is null : expected Exception</span>
         <span class="pl-k">if</span> (foo <span class="pl-k">==</span> <span class="pl-c1">null</span> <span class="pl-k">||</span> foo<span class="pl-k">.</span>getId() <span class="pl-k">==</span> <span class="pl-c1">null</span>) {
             <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-smi">Exception</span>();
         }
 
-        <span class="pl-c">// 3. Test lastModifiedDate is modified.</span>
+        <span class="pl-c">// 3. Test if lastModifiedDate is modified.</span>
         foo<span class="pl-k">.</span>setLastModifiedDate(<span class="pl-k">new</span> <span class="pl-smi">Date</span>());
 
         <span class="pl-c">// 4. Finally a test with no error.</span>
