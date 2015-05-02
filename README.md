@@ -142,6 +142,42 @@ public class MyServiceImpl implements MyService {
     }
 }
 ```
+----------
+Example test
+
+#### GetId() 
+ #5 Finally a test with no error.
+```java
+	@Test
+    public void getById() throws Exception {
+
+        final Date date = new Date();
+
+        final List<String> list = new ArrayList<String>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+
+        final Foo foo = new Foo();
+        foo.setId(1);
+        foo.setLastModifiedDate(date);
+        foo.setName("name");
+        foo.setList(list);
+		
+		// Check if myRepository is called with 1 and returned my object foo
+        Mockito.when(myRepositoryDAO.getById(Mockito.eq(1))).thenReturn(foo);
+
+        final Foo result = myService.getById(1);
+
+        Assert.assertEquals(Integer.valueOf(1), result.getId());
+        Assert.assertEquals(date, result.getLastModifiedDate());
+        Assert.assertEquals("name", result.getName());
+        Assert.assertEquals(Integer.valueOf(3), Integer.valueOf(result.getList().size()));
+
+        // two lists are defined to be equal if they contain the same elements in the same order.
+        Assert.assertEquals(list, result.getList());
+    }
+```
 
 #### 4. How mock private methode ?
 
