@@ -93,15 +93,14 @@ public class MyServiceImpl implements MyService {
         }
         
 		// 2. Test whether the argument is passed to the DAO.
-		// 3. Test if the argument is the same as that through the method.
         final Foo foo = myRepositoryDAO.getById(id);
 
-		// 4. Test if foo is null : expected Exception
+		// 3. Test if foo is null : expected Exception
         if (foo == null) {
             throw new Exception();
         }
 
-		// 5. Finally a test with no error.
+		// 4. Finally a test with no error.
         return foo;
     }
 
@@ -143,40 +142,59 @@ public class MyServiceImpl implements MyService {
 }
 ```
 ----------
-Example test
 
 #### GetId() 
- #5 Finally a test with no error.
+
+ #1 Test if id is null : expected Exception
 ```java
-	@Test
-    public void getById() throws Exception {
+@Test(expected = Exception.class)
+ public void getById_nullId() throws Exception {
+     myService.getById(null);
+ }
+```
 
-        final Date date = new Date();
+ #3 Test whether the argument is passed to the DAO.
+```java
+@Test(expected = Exception.class)
+public void getById_daoReturnNull() throws Exception {
 
-        final List<String> list = new ArrayList<String>();
-        list.add("1");
-        list.add("2");
-        list.add("3");
+   Mockito.when(myRepositoryDAO.getById(Mockito.eq(1))).thenReturn(null);
 
-        final Foo foo = new Foo();
-        foo.setId(1);
-        foo.setLastModifiedDate(date);
-        foo.setName("name");
-        foo.setList(list);
-		
-		// Check if myRepository is called with 1 and returned my object foo
-        Mockito.when(myRepositoryDAO.getById(Mockito.eq(1))).thenReturn(foo);
+   myService.getById(1);
+}
+```
 
-        final Foo result = myService.getById(1);
+ #4 Finally a test with no error. And #2 test whether the argument is passed to the DAO.
+```java
+@Test
+public void getById() throws Exception {
 
-        Assert.assertEquals(Integer.valueOf(1), result.getId());
-        Assert.assertEquals(date, result.getLastModifiedDate());
-        Assert.assertEquals("name", result.getName());
-        Assert.assertEquals(Integer.valueOf(3), Integer.valueOf(result.getList().size()));
+   final Date date = new Date();
 
-        // two lists are defined to be equal if they contain the same elements in the same order.
-        Assert.assertEquals(list, result.getList());
-    }
+   final List<String> list = new ArrayList<String>();
+   list.add("1");
+   list.add("2");
+   list.add("3");
+
+   final Foo foo = new Foo();
+   foo.setId(1);
+   foo.setLastModifiedDate(date);
+   foo.setName("name");
+   foo.setList(list);
+
+// Check if myRepository is called with 1 and returned my object foo
+   Mockito.when(myRepositoryDAO.getById(Mockito.eq(1))).thenReturn(foo);
+
+   final Foo result = myService.getById(1);
+
+   Assert.assertEquals(Integer.valueOf(1), result.getId());
+   Assert.assertEquals(date, result.getLastModifiedDate());
+   Assert.assertEquals("name", result.getName());
+   Assert.assertEquals(Integer.valueOf(3), Integer.valueOf(result.getList().size()));
+
+   // two lists are defined to be equal if they contain the same elements in the same order.
+   Assert.assertEquals(list, result.getList());
+}
 ```
 
 #### 4. How mock private methode ?
