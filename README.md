@@ -113,10 +113,9 @@ public class MyServiceImpl implements MyService {
         }
 
 		// 3. Test whether the argument is passed to the DAO.
-		// 4. Test if the argument is the same as that through the method.
         final List<Foo> foo = myRepositoryDAO.findByName(name);
 
-		// 5. Test if foo is null : excepted ArraysList empty
+		// 4. Test if foo is null : excepted ArraysList empty
         if (foo == null) {
             return new ArrayList<Foo>();
         }
