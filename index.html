@@ -23,8 +23,9 @@
 <a id="--how-do-tests-with-mockito" class="anchor" href="#--how-do-tests-with-mockito" aria-hidden="true"><span class="octicon octicon-link"></span></a>
 <img src="https://raw.githubusercontent.com/MaximeFrancoeur/How-do-tests/master/img/mockito_logo.png" alt="Mockito logo">  How do tests with Mockito.</h1>
 
-<h3>
-<a id="this-page-is-under-construction" class="anchor" href="#this-page-is-under-construction" aria-hidden="true"><span class="octicon octicon-link"></span></a>This page is under construction.</h3>
+<h2>
+<a id="this-page-is-under-construction" class="anchor" href="#this-page-is-under-construction" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>This page is under construction.</code>
+</h2>
 
 <h4>
 <a id="1-add-dependency-in-your-project-maven" class="anchor" href="#1-add-dependency-in-your-project-maven" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Add dependency in your project Maven</h4>
@@ -170,6 +171,45 @@
         <span class="pl-k">return</span> myRepositoryDAO<span class="pl-k">.</span>updateFoo(foo);
     }
 }</pre></div>
+
+<hr>
+
+<p>Example test</p>
+
+<h4>
+<a id="getid" class="anchor" href="#getid" aria-hidden="true"><span class="octicon octicon-link"></span></a>GetId()</h4>
+
+<p>#5 Finally a test with no error.</p>
+
+<div class="highlight highlight-java"><pre>    @<span class="pl-smi">Test</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> getById() throws <span class="pl-smi">Exception</span> {
+
+        <span class="pl-k">final</span> <span class="pl-smi">Date</span> date <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Date</span>();
+
+        <span class="pl-k">final</span> <span class="pl-k">List&lt;<span class="pl-smi">String</span>&gt;</span> list <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-k">ArrayList&lt;<span class="pl-smi">String</span>&gt;</span>();
+        list<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span>);
+        list<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span>);
+        list<span class="pl-k">.</span>add(<span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>);
+
+        <span class="pl-k">final</span> <span class="pl-smi">Foo</span> foo <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Foo</span>();
+        foo<span class="pl-k">.</span>setId(<span class="pl-c1">1</span>);
+        foo<span class="pl-k">.</span>setLastModifiedDate(date);
+        foo<span class="pl-k">.</span>setName(<span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>);
+        foo<span class="pl-k">.</span>setList(list);
+
+        <span class="pl-c">// Check if myRepository is called with 1 and returned my object foo</span>
+        <span class="pl-smi">Mockito</span><span class="pl-k">.</span>when(myRepositoryDAO<span class="pl-k">.</span>getById(<span class="pl-smi">Mockito</span><span class="pl-k">.</span>eq(<span class="pl-c1">1</span>)))<span class="pl-k">.</span>thenReturn(foo);
+
+        <span class="pl-k">final</span> <span class="pl-smi">Foo</span> result <span class="pl-k">=</span> myService<span class="pl-k">.</span>getById(<span class="pl-c1">1</span>);
+
+        <span class="pl-smi">Assert</span><span class="pl-k">.</span>assertEquals(<span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(<span class="pl-c1">1</span>), result<span class="pl-k">.</span>getId());
+        <span class="pl-smi">Assert</span><span class="pl-k">.</span>assertEquals(date, result<span class="pl-k">.</span>getLastModifiedDate());
+        <span class="pl-smi">Assert</span><span class="pl-k">.</span>assertEquals(<span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>, result<span class="pl-k">.</span>getName());
+        <span class="pl-smi">Assert</span><span class="pl-k">.</span>assertEquals(<span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(<span class="pl-c1">3</span>), <span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(result<span class="pl-k">.</span>getList()<span class="pl-k">.</span>size()));
+
+        <span class="pl-c">// two lists are defined to be equal if they contain the same elements in the same order.</span>
+        <span class="pl-smi">Assert</span><span class="pl-k">.</span>assertEquals(list, result<span class="pl-k">.</span>getList());
+    }</pre></div>
 
 <h4>
 <a id="4-how-mock-private-methode-" class="anchor" href="#4-how-mock-private-methode-" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. How mock private methode ?</h4>
